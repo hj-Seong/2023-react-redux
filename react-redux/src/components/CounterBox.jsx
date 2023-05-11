@@ -34,7 +34,8 @@ export default function CounterBox() {
         <button onClick={()=>{ dispatch( change(5) ) }}>
           +5
         </button>
-        <button onClick={()=>{}}>
+        {/** +30 버튼을 눌렀을때 30 증가하게 만들기 */}
+        <button onClick={()=>{ dispatch( change(30) ) }}>
           +30
         </button>
     </div>
