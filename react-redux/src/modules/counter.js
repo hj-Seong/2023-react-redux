@@ -13,6 +13,7 @@
 
 // 액션 객체를 반환하는 액션생성함수
 export const increase = () => ({ type : "INCREASE" });
+export const decrease = ()=>({type:"DECREASE"})
 
 // state의 기본값 작성
 const initalState = 0;
@@ -24,6 +25,8 @@ function counter(state = initalState, action) {
     switch (action.type) {
         case  "INCREASE":
             return state+1;
+        case "DECREASE":
+            return state-1;
         default :
             return state;
     }
