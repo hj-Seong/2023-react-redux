@@ -8,18 +8,21 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux"
 
 // store를 만들기 위한 createStore 추가
-// 줄이그어진 이유 : toolkit을 사용 권장
+// 줄이 그어진 이유 : toolkit을 사용 권장
 import {createStore} from "redux"
 
 // rootReducer 가져옴
 import rootReduser from './modules';
 
-
+// craeteStore를 통해 store 생성 > Provider의store 속성값
+const store = createStore(rootReduser);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
