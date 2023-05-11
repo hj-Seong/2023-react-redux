@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux"
 
 // dispatch에서 사용할 액션 함수
-import { decrease, increase } from '../modules/counter';
+import { change, decrease, increase } from '../modules/counter';
 
 export default function CounterBox() {
   //useSelector로 값 가져오기
@@ -30,6 +30,12 @@ export default function CounterBox() {
         </button>
         <button onClick={()=>{ dispatch( decrease() ) }}>
             -1
+        </button>
+        <button onClick={()=>{ dispatch( change(5) ) }}>
+          +5
+        </button>
+        <button onClick={()=>{}}>
+          +30
         </button>
     </div>
   )
