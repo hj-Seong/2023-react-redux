@@ -17,6 +17,7 @@ const initalState = {
 // 액션 생성 함수
 export const increaseNumber = ()=>({type:"INCREASE_NUMBER"});
 export const decreaseNumber = ()=>({type:"DECREASE_NUMBER"});
+export const changeNumber = num =>({type:"CHANGE_NUMBER", payload:num});
 
 // 리듀서 작성
 function counterNumber(state=initalState, action) {
@@ -31,6 +32,11 @@ function counterNumber(state=initalState, action) {
             return {
                 ...state,
                 count : state.count - state.num
+            }
+        case "CHANGE_NUMBER":
+            return {
+                ...state,
+                num : action.payload
             }
         default :
             return state
