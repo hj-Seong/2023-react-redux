@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addMemo } from '../modules/memo';
+import { addMemo, deleteMemo } from '../modules/memo';
 
 export default function MemoComp() {
   const memo = useSelector((state)=>(state.memo));
@@ -62,7 +62,7 @@ export default function MemoComp() {
                         // m.id를 액션생성함수로 전달하여 
                         // 리듀서에서 filter을 통해 새 배열 만들기
                         // memo.js에 작성
-                        onClick={()=>{}}
+                        onClick={()=>{ dispatch( deleteMemo(m.id) ) }}
                     >
                         X
                     </button>

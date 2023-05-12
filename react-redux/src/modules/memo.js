@@ -30,6 +30,9 @@ let id = 3;
 // addMemo는 메모의 값을 추가하기위해 함수를 통해 memo의 값을 가져옴
 // : {text, date}을 가져와야함 >> dispatch사용때 확인!
 export const addMemo = (memo) => ({type : "ADD_MEMO", payload : memo});
+// id는 메모의 id 값을 가져옴
+export const deleteMemo = (id) => ({type:"DELETE_MEMO", payload:id});
+
 
 // 리듀서 
 function memo(state=initalState, action) {
@@ -46,6 +49,10 @@ function memo(state=initalState, action) {
             const newMemoList = state.concat(newMemo)
             // 새로운 메모 리스트 return
             return newMemoList
+        case "DELETE_MEMO":
+            // filter를 통해서 id제외하고 새로운 배열
+            const deleteMemoList = state.filter((memo)=>(memo.id !== action.payload));
+            return deleteMemoList
         default :
             return state
     }
