@@ -21,6 +21,10 @@ const initalState = [
         date : "2023-05-12"
     },
 ]
+// 화면에 출력될때 수정되어서 출력되지않음
+// 내부적으로 쓰는 변수
+let id = 3;
+
 
 // 액션 생성 함수
 // addMemo는 메모의 값을 추가하기위해 함수를 통해 memo의 값을 가져옴
@@ -34,8 +38,10 @@ function memo(state=initalState, action) {
             // 새로운 메모 작성
             const newMemo = {
                 ...action.payload,
-                id : 3
+                id : id
             }
+            // state에 있는 값이 아니므로 직접접근해서 수정가능
+            id++
             // 새로운 메모 리스트 만들어서
             const newMemoList = state.concat(newMemo)
             // 새로운 메모 리스트 return
