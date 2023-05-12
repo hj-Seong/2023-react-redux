@@ -27,6 +27,12 @@ export const addNumThunk = () => (next) => {
     console.log("Thunk를 이용하여 실행")
     next({type:"ADD_NUM"})
 }
+// Thunk 를 이용한 액션 함수 작성 
+// next()를 이용하여 ADD_NUM 두번 실행하기
+export const doubleNum = () => (next) => {
+    next({type:"ADD_NUM"})
+    next({type:"ADD_NUM"})
+}
 
 
 

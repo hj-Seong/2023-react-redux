@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addNum, addNumThunk } from '../modules/counterThunk';
+import { addNum, addNumThunk, doubleNum } from '../modules/counterThunk';
 
 export default function CounterThunk() {
   const counterThunk = useSelector((state)=>(state.counterThunk))
@@ -18,6 +18,9 @@ export default function CounterThunk() {
         </button>
         <button onClick={()=>{dispatch( addNumThunk() )}}>
             리덕스 Thunck 액션함수
+        </button>
+        <button onClick={()=>{dispatch( doubleNum() )}}>
+            리덕스 Thunck 액션함수 연습
         </button>
 
     </div>
