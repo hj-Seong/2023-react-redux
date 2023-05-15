@@ -14,6 +14,10 @@ import counterSlice from './slices/counterSlice';
 //combineReducer를 이용하여 묶어서 store로 내보내는 부분
 export default configureStore({
     reducer : {
+        // useSelector에서 state의 어디로 접근할지에 대한 이름
+        // state.counter로 접근
         counter : counterSlice,
+        // state.counterReducer로 접근 (값은 위의내용과 동일)
+        counterReducer
     },
 })
