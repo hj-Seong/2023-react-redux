@@ -29,6 +29,12 @@ export const getWeather = () => async (next) => {
     next({type:"endloading"})
 }
 
+// Thunk 와 비동기함수 연습
+// 이전의 부산먹거리api를 들고와서 추가하기
+// action.type 추가 필요 :getFood
+
+
+
 // 리듀서
 function weatherThunk (state=initalState, action) {
     switch(action.type) {
