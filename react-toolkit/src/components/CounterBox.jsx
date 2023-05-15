@@ -21,7 +21,11 @@ export default function CounterBox() {
         </button>
         {/** num값을 바꾸기 위한 input태그 작성 
          *   *input태그로 받아온 값은 문자열!
+         * + 시간이 된다면 num값만큼 감소하는 리듀서 작성
         */}
+        <input type='number' 
+            value={num} 
+            onChange={(e)=>{setNum( parseInt(e.target.value) )}}/>
         <button onClick={()=>{
             //매개변수로 전달되는 값은 payload로 사용할수 있다
             dispatch( incrementByAmount(num) )
