@@ -39,6 +39,21 @@ export const memoSlice = createSlice({
         },
         // 이름은 다르지만 위와 동일한 메소드를 만들고
         // push가 잘 작동하는지 확인해보기
+        
+        // 반드시 toolkit에서 제공되는 형태로 해야할 필요는 없다
+        // *배열에 관한 값을 사용할때는 익숙한 메서드 사용 권장
+        deleteMemoRedux : (state, action)=>{
+            // 1. id값을 이용해서 제외한 새로운 배열 생성-filter
+            const newMemoList = state.filter((m)=>(m.id !== action.payload));
+            // 2. return 새로운 배열을 할당
+            // * return 을 통해서 할당하는 형태는 state의 형태
+            return newMemoList
+        },
+        // state값을 바로 수정하기위해 splice 사용
+        deleteMemoSplice : (state, action)=>{
+            //action.payload에서 memolist의 인덱스값 가져올 예정
+            state.splice(action.payload,1);
+        }
     }
 })
 
@@ -47,5 +62,5 @@ export const memoSlice = createSlice({
 let id = 2;
 
 
-export const { addMemoRedux, addMemoToolkit } = memoSlice.actions
+export const { addMemoRedux, addMemoToolkit, deleteMemoRedux, deleteMemoSplice } = memoSlice.actions
 export default memoSlice.reducer

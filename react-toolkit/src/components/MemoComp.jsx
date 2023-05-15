@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { addMemoRedux, addMemoToolkit } from '../slices/memoSlice';
+import { addMemoRedux, addMemoToolkit, deleteMemoRedux, deleteMemoSplice } from '../slices/memoSlice';
 
 export default function MemoComp() {
   const memo = useSelector((state)=>(state.memo));
@@ -10,10 +10,20 @@ export default function MemoComp() {
   return (
     <div>
         {
-            memo.map((m)=>(
+            // memo배열의 index 값을 전달하여 splice를 이용하여 삭제
+            // 다양한 삭제 방법 중 하나
+            memo.map((m, index)=>(
                 <div key={m.id}>
                     <h3>{m.text}</h3>
                     <p>{m.date}</p>
+                    <button 
+                        onClick={()=>{dispatch(deleteMemoRedux(m.id))}}>
+                        X
+                    </button>
+                    <button 
+                        onClick={()=>{dispatch(deleteMemoSplice(index))}}>
+                        index-X
+                    </button>
                 </div>
             ))
         }
