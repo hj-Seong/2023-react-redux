@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addMemo, deleteMemo, likeMemoRedux, likeMemoToolkit } from '../slices/memoSlice';
+import { toggleLike } from '../slices/likeMemoSlice';
 
 export default function MemoComp() {
   const memolist = useSelector((state)=>(state.memo))
+  const likememolist = useSelector((state)=>(state.likeMemo))
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
@@ -32,11 +34,21 @@ export default function MemoComp() {
                     <button onClick={()=>{dispatch(likeMemoToolkit({index, memo}))}}>
                         {memo.isLike ? "찜완료" : "찜하기"}
                     </button>
+                    <button onClick={()=>{dispatch(toggleLike(memo))}}>
+                        {likememolist.find((likememo)=>(likememo.id === memo.id)) ? "🖤" : "🤍"}
+                    </button>
                     <button 
                     onClick={()=>{dispatch(deleteMemo(index))}}>
                         X
                     </button>
                 </div>
+            ))
+        }
+        <hr />
+        <h3>likeMemo로 확인</h3>
+        {
+            likememolist.map((memo)=>(
+                <h4>{memo.text}</h4>
             ))
         }
         <hr />
