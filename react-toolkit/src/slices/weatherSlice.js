@@ -23,8 +23,21 @@ export const weatherSlice = createSlice({
 })
 
 // thunk를 사용한 액션생성함수 작성
-
-
+export const getWeatherAPI = () => async(dispatch) => {
+    dispatch(startLoading())
+    try{
+        // try-catch구문을 통해서 
+        // 오류가 날 확률이 있는 코드를 try에 넣고
+        const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Busan&appid=35e5a6a1442bbe9dab8c5414437e8ce2&lang=kr')
+        const data = await response.json()
+        dispatch(getWeather(data.weather[0].description));
+    }
+    catch {
+        // 오류가 났을때 실행할 내용을 아래 작성
+        dispatch(getWeather("없음"));
+    }
+    dispatch(endLoading())
+}
 
 export const { startLoading, endLoading, getWeather } =weatherSlice.actions
 export default weatherSlice.reducer
