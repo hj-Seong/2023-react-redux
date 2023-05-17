@@ -7,6 +7,11 @@ export default function MemoComp() {
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
+
+  // memolist중에서 isLike가 true인 배열
+  // filter() 사용
+  const likeMemo = memolist.filter((memo)=>(memo.isLike))
+
   return (
     <div>
         <h2>메모장입니다</h2>
@@ -32,6 +37,13 @@ export default function MemoComp() {
                         X
                     </button>
                 </div>
+            ))
+        }
+        <hr />
+        <h3>즐겨찾기</h3>
+        {
+            likeMemo.map((memo)=>(
+                <h3>{memo.text}</h3>
             ))
         }
     </div>
