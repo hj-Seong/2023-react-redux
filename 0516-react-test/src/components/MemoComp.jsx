@@ -38,7 +38,14 @@ export default function MemoComp() {
                         {likememolist.find((likememo)=>(likememo.id === memo.id)) ? "🖤" : "🤍"}
                     </button>
                     <button 
-                    onClick={()=>{dispatch(deleteMemo(index))}}>
+                    onClick={()=>{
+                            dispatch(deleteMemo(index))
+                            // 삭제할때, id값이 있다면 , toggle도 함께 실행하기
+                            // likeMemo에서 값 제거
+                            if(likememolist.find((likememo)=>(likememo.id === memo.id))) {
+                                dispatch(toggleLike(memo))
+                            }
+                        }}>
                         X
                     </button>
                 </div>
