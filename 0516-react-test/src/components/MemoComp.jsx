@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addMemo, deleteMemo } from '../slices/memoSlice';
+import { addMemo, deleteMemo, likeMemoRedux, likeMemoToolkit } from '../slices/memoSlice';
 
 export default function MemoComp() {
   const memolist = useSelector((state)=>(state.memo))
@@ -21,7 +21,12 @@ export default function MemoComp() {
                 <div key={memo.id}>
                     <h3>{memo.text}</h3>
                     <span>{memo.date}</span>
-                    <button>{memo.isLike ? "찜완료" : "찜하기"}</button>
+                    <button onClick={()=>{dispatch(likeMemoRedux(memo.id))}}>
+                        {memo.isLike ? "찜완료" : "찜하기"}
+                    </button>
+                    <button onClick={()=>{dispatch(likeMemoToolkit({index, memo}))}}>
+                        {memo.isLike ? "찜완료" : "찜하기"}
+                    </button>
                     <button 
                     onClick={()=>{dispatch(deleteMemo(index))}}>
                         X
