@@ -35,6 +35,7 @@ export const memoSlice = createSlice({
                 ...action.payload,
                 id : id
             }
+            id++;
             state.push(newMemo)
         },
         // 이름은 다르지만 위와 동일한 메소드를 만들고
